@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
-import Tours from './components/tours';
+import Tours from './components/Tours';
 import Loading from './components/Loading';
 import { Tour } from './types';
 

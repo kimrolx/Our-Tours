@@ -115,6 +115,7 @@ ul {
 }
 
 .btn {
+  margin-top: 2rem;
   cursor: pointer;
   color: var(--white);
   background: var(--primary-500);
@@ -292,7 +293,8 @@ main {
 .tour-info p {
   line-height: 1.5;
   color: var(--grey-500);
-  margin-bottom: 1.25rem
+  margin-bottom: 1.25rem;
+  
 }
 
 .info-btn,.delete-btn {
@@ -315,6 +317,10 @@ main {
 .delete-btn:hover {
   background: var(--primary-500);
   color: var(--white)
+}
+
+.btn{
+  margin-top: 2rem";
 }
 
 @media screen and (min-width: 768px) {

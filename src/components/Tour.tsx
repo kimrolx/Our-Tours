@@ -1,32 +1,37 @@
 import { useState } from 'react';
-import {Tour as TourType} from '../types';
+import { Tour as TourType } from '../types';
 
 type TourProps = {
-    tour: TourType;
-}
+  tour: TourType;
+  onNotInterested: () => void;
+};
 
-const Tour = ({ tour }: TourProps) => {
-    const {image, name, price, info} = tour;
-    const [readMore, setReadMore] = useState(false);
+const Tour = ({ tour, onNotInterested }: TourProps) => {
+  const { image, name, price, info } = tour;
+  const [readMore, setReadMore] = useState(false);
 
   return (
-  <article className = 'single-tour'>
-    <img src={image} alt={name} />
-    <footer>
+    <article className="single-tour">
+      <img src={image} alt={name} className="img" />
+      <footer>
         <div className="tour-info">
-            <h4>{name}</h4>
-            <h4 className="tour-price"> ${price}</h4>
+          <h5>{name}</h5>
+          <h4 className="tour-price">${price}</h4>
+
+          <p>
+            {readMore ? info : info.substring(0, 200) + '...'}
+            <button className="info-btn" onClick={() => setReadMore(!readMore)}>
+              {readMore ? 'Show Less' : 'Read More'}
+            </button>
+          </p>
+
+          <button className="delete-btn btn-block btn" onClick={onNotInterested}>
+            Not Interested
+          </button>
         </div>
-        <p>
-            {readMore ? info : info.substring(0, 100) + '...'}
-            <button onClick={() => setReadMore(!readMore)}>
-                {readMore ? 'Show Less' : 'Read More'}
-                </button>
-        </p>
-        <button className="delete-btn">Not Interested</button>
-    </footer>
+      </footer>
     </article>
   );
 };
 
-export default Tour 
+export default Tour;
