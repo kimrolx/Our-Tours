@@ -18,6 +18,32 @@ export default function Tours({ tours }: ToursProps) {
     setInterestedTours([...tours]);
   };
 
+  const renderTours = () => {
+    if (interestedTours.length > 0) {
+      return (
+        <div className="tours">
+          {interestedTours.map((tour) => (
+            <Tour
+              key={tour.id}
+              tour={tour}
+              onNotInterested={() => handleNotInterested(tour.id)}
+            />
+          ))}
+        </div>
+      )
+    } else {
+      return (
+        <div className="title">
+          <h2>No Tours Left</h2>
+          <div className="title-underline" />
+          <button className="btn" onClick={handleRefreshClick}>
+            Refresh
+          </button>
+        </div>
+      );
+    }
+  };
+
   return (
     <main>
       <section>
@@ -28,25 +54,7 @@ export default function Tours({ tours }: ToursProps) {
           </div>
         )}
 
-        <div className="tours">
-          {interestedTours.length > 0 ? (
-            interestedTours.map((tour) => {
-              return (
-                <Tour
-                  key={tour.id}
-                  tour={tour}
-                  onNotInterested={() => handleNotInterested(tour.id)}
-                />
-              );
-            })
-          ) : (
-            <div className="title">
-              <h2>No Tours Left</h2>
-              <div className="title-underline"/>
-              <button className= "btn" onClick={handleRefreshClick}>Refresh</button>
-            </div>
-          )}
-        </div>
+        {renderTours()}
       </section>
     </main>
   );
